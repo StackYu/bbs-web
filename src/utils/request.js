@@ -1,7 +1,4 @@
 import axios from 'axios'
-import { MessageBox, Message } from 'element-ui'
-import store from '@/store'
-import { getToken } from '@/utils/auth'
 
 // 创建axios
 const service = axios.create({
@@ -10,6 +7,8 @@ const service = axios.create({
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
+
+// service.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8'
 
 // request interceptor
 // service.interceptors.request.use(

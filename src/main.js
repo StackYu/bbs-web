@@ -6,7 +6,6 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
-
 import 'highlight.js/styles/atom-one-dark.css'
 import highlightJS from 'highlight.js'
 import store from './store'

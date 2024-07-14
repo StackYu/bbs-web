@@ -1,4 +1,5 @@
 <script>
+import {mapGetters} from "vuex"
 import bus from '@/utils/EventBus'
 
 export default {
@@ -19,8 +20,18 @@ export default {
   },
   methods: {
     showUserMenu() {
+      // 打开用户侧边菜单
       bus.$emit('openUserMenu');
     },
+    toLogin() {
+      this.$router.push('/login')
+    },
+    toRegister() {
+
+    },
+  },
+  computed: {
+    ...mapGetters(['user', 'isVisitor'])
   }
 }
 </script>
@@ -45,27 +56,17 @@ export default {
           </v-col>
         </v-row>
       </v-responsive>
-      <!-- 徽章 -->
 
-      <v-badge bordered bottom color="deep-purple accent-4" dot offset-x="10" offset-y="10" >
+      <!-- 用户头像 -->
+      <v-badge v-show="!isVisitor" bordered bottom color="deep-purple accent-4" dot offset-x="10" offset-y="10">
         <v-avatar size="40" @click="showUserMenu">
           <v-img src="https://cdn.vuetifyjs.com/images/lists/2.jpg"></v-img>
         </v-avatar>
       </v-badge>
-      <v-btn
-          class="ma-2"
-          outlined
-          color="white"
-      >
-        登录
-      </v-btn>
-      <v-btn
-          class="ma-2"
-          outlined
-          color="white"
-      >
-        注册
-      </v-btn>
+      <!-- 登录 -->
+      <v-btn v-show="isVisitor" @click="toLogin" class="ma-2" outlined color="white">登录</v-btn>
+      <!-- 注册 -->
+      <v-btn v-show="isVisitor" @click="toRegister" class="ma-2" outlined color="white">注册</v-btn>
     </v-container>
   </v-app-bar>
 </template>

@@ -1,6 +1,7 @@
 <script>
 import {login} from "@/api/auth";
 import store from '@/store'
+import {mapGetters} from "vuex";
 
 export default {
   name: "index",
@@ -38,7 +39,6 @@ export default {
       // 登录
       login(loginParam).then(response => {
         const {data} = response
-        console.log(JSON.stringify(data))
         if (data.error === 0) {
           // 保存用户信息
           store.dispatch('user/saveUserInfo', data.data)
@@ -57,6 +57,14 @@ export default {
       this.$router.push('/register')
     },
   },
+  computed: {
+    ...mapGetters(['user', 'isVisitor', 'token'])
+  },
+  created() {
+    if (!this.isVisitor) {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 

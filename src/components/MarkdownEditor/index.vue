@@ -94,7 +94,6 @@ export default {
     uploadImg() {
       this.editor.removeHook('addImageBlobHook');
       this.editor.on('addImageBlobHook', (_file, cb) => {
-        console.log('file' + _file)
         // const file = new FormData();
         // file.append('file', _file);
         // const result = upload.uploadImg(file);

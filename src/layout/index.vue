@@ -22,7 +22,6 @@ export default {
   components: {LayoutUserMenu, LayoutSpeedDial, LayoutFooter, LayoutBar},
   data: () => ({}),
   created() {
-    console.log('test:' + process.env.NODE_ENV)
   }
 }
 </script>

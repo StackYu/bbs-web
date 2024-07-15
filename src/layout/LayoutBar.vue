@@ -31,7 +31,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['user', 'isVisitor'])
+    ...mapGetters(['user', 'isVisitor', 'token'])
+  },
+  created() {
+    console.log(this.token)
   }
 }
 </script>
@@ -49,6 +52,7 @@ export default {
                 flat
                 hide-details
                 rounded
+                dark
                 solo-inverted
                 label="输入搜索内容"
                 prepend-inner-icon="mdi-magnify"
@@ -70,7 +74,3 @@ export default {
     </v-container>
   </v-app-bar>
 </template>
-
-<style scoped>
-
-</style>

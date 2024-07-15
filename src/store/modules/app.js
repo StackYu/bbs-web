@@ -5,9 +5,28 @@ const state = {
     appMenu: []
 }
 
-const mutations = {}
+const mutations = {
+    SET_IS_VISITOR: (state, isVisitor) => {
+        state.isVisitor = isVisitor
+    },
+    SET_APP_MENU: (state, appMenu) => {
+        state.appMenu = appMenu
+    },
+}
 
-const actions = {}
+const actions = {
+    clear({commit}) {
+        commit('SET_IS_VISITOR', true)
+        commit('SET_APP_MENU', [])
+    },
+    setYesVisitor({commit}) {
+        commit('SET_IS_VISITOR', true)
+    },
+    setNoVisitor({commit}) {
+        console.log("set no visitor")
+        commit('SET_IS_VISITOR', false)
+    },
+}
 
 export default {
     namespaced: true,

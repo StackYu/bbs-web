@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import getters from './getters'
+// 需要添加，对vuex进行本地化localStorage，否则刷新后vuex数据会消失
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -16,7 +18,10 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 
 const store = new Vuex.Store({
     modules,
-    getters
+    getters,
+    // 当state中的值发生改变，此时localStorage中的vuex的值会同步把state中的所有值存储起来，
+    // 当页面刷新的时候，state的值会从localStorage自动获取vuex的value值，赋值到state中
+    plugins: [createPersistedState()]
 })
 
 export default store

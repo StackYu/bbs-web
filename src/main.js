@@ -10,6 +10,8 @@ import 'highlight.js/styles/atom-one-dark.css'
 import highlightJS from 'highlight.js'
 import store from './store'
 
+import './permission'
+
 Vue.use(highlightJS)
 
 Vue.config.productionTip = false

@@ -1,5 +1,6 @@
 <script>
 import bus from '@/utils/EventBus'
+import {mapGetters} from "vuex";
 
 export default {
   name: "LayoutUserMenu",
@@ -25,6 +26,9 @@ export default {
     ],
     model: 1,
   }),
+  computed: {
+    ...mapGetters(['user', 'token'])
+  },
   created() {
     bus.$on('openUserMenu', () => {
       this.drawer = !this.drawer
@@ -49,7 +53,7 @@ export default {
       </v-list-item-avatar>
 
       <v-list-item-content>
-        <v-list-item-title>John Leider</v-list-item-title>
+        <v-list-item-title>{{this.user.userName}}</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
 
@@ -64,7 +68,6 @@ export default {
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
-
         <v-list-item-content>
           <v-list-item-title>洒洒水飒飒</v-list-item-title>
         </v-list-item-content>

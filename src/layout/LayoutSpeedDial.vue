@@ -21,6 +21,7 @@ export default {
           v-model="fab"
           color="blue darken-2"
           fab
+          dark
       >
         <v-icon v-if="fab">mdi-close</v-icon>
         <v-icon v-else>mdi-account-circle</v-icon>

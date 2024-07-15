@@ -1,8 +1,10 @@
 import {Base64} from 'js-base64';
+import store from "@/store";
 
 const state = {
-    token: "Test Token ",
-    user: '',
+    token: '',
+    user: {},
+    exp: 0,
 }
 
 const mutations = {
@@ -10,19 +12,31 @@ const mutations = {
         state.token = token
     },
     SET_USER: (state, user) => {
-        state.introduction = user
+        state.user = user
+    },
+    SET_EXP: (state, exp) => {
+        state.exp = exp
     }
 }
 
 const actions = {
+    clear({commit}) {
+        commit('SET_TOKEN', '')
+        commit('SET_USER', {})
+        commit('SET_EXP', 0)
+    },
     saveUserInfo({commit}, data) {
-        commit('SET_TOKEN', data)
+        if (data !== undefined) {
+            commit('SET_TOKEN', data);
+            //获得base64
+            const base64Str = data.substring(data.indexOf('.') + 1, data.lastIndexOf('.'))
+            const item = JSON.parse(Base64.decode(base64Str))
+            // 设置User
+            commit('SET_USER', JSON.parse(item.USER_INFO))
+            commit('SET_EXP', item.exp)
 
-        //获得base64
-        const base64Str = data.substring(data.indexOf('.') + 1, data.lastIndexOf('.'))
-        const object = JSON.parse(Base64.decode(base64Str))
-        // 设置User
-        commit('SET_USER', object.USER_INFO)
+            store.dispatch('app/setNoVisitor')
+        }
     },
 }
 

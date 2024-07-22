@@ -103,7 +103,9 @@ export default {
       if (this.updateStatus === 2) {
         const formData = new FormData()
         formData.append("id", this.systemInfo.id);
-        formData.append("parentId", this.systemInfo.parentId);
+        if (!(this.systemInfo.parentId === null || this.systemInfo.parentId === undefined)) {
+          formData.append("parentId", Number.parseInt(this.systemInfo.parentId));
+        }
         formData.append("systemName", this.systemInfo.systemName);
         formData.append("url", this.systemInfo.url);
         formData.append("link", this.systemInfo.link);

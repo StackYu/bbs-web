@@ -1,9 +1,10 @@
 import request from '@/utils/request'
 
-export function getMenu() {
+export function saveMenu(data) {
     return request({
-        url: '/v1/api/menu',
-        method: 'get'
+        url: '/menu',
+        method: 'post',
+        data
     })
 }
 

@@ -12,3 +12,10 @@ export function login(data) {
         data
     })
 }
+
+export function test() {
+    return request({
+        url: '/test',
+        method: 'get'
+    })
+}

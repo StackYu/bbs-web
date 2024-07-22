@@ -44,7 +44,7 @@ export default {
       right
       temporary
       color="grey lighten-3"
-      width="320px"
+      width="400px"
       style="border-radius: 10px 0 0 10px;"
   >
     <v-list-item>
@@ -56,6 +56,23 @@ export default {
         <v-list-item-title>{{this.user.userName}}</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
+
+    <v-divider></v-divider>
+
+    <v-list>
+      <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          link
+      >
+        <v-list-item-icon>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>洒洒水飒飒</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
 
     <v-divider></v-divider>
 

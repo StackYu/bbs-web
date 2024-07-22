@@ -9,11 +9,15 @@ const routes = [
         path: '/',
         component: Layout,
         redirect: '/index',
+
         children: [
             {
                 path: 'index',
                 component: () => import('@/views/home/index'),
                 name: 'Index',
+                meta: {
+                    title: '主页',
+                },
             }
         ]
     },
@@ -60,9 +64,9 @@ const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '@/views/login'),
-        meta:{
-            title:'用户登录',
-            icon:'mdi-login-variant'
+        meta: {
+            title: '用户登录',
+            icon: 'mdi-login-variant'
         }
     },
     {
@@ -72,7 +76,39 @@ const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '@/views/register')
-    }
+    },
+    {
+        path: '/menu',
+        name: 'Menu',
+        component: Layout,
+        redirect: '/menu/index',
+        children: [
+            {
+                path: 'index',
+                component: () => import('@/views/menu/index'),
+                name: 'Index',
+                meta: {
+                    title: '菜单'
+                }
+            }
+        ]
+    },
+    {
+        path: '/systemInfo',
+        name: 'SystemInfo',
+        component: Layout,
+        redirect: '/systemInfo/index',
+        children: [
+            {
+                path: 'index',
+                component: () => import('@/views/systemInfo/index'),
+                name: 'Index',
+                meta: {
+                    title: '系统信息'
+                }
+            }
+        ]
+    },
 ]
 
 const router = new VueRouter({

@@ -1,9 +1,19 @@
 <script>
+import {test} from "@/api/auth";
+
 export default {
   name: "LayoutSpeedDial",
   data: () => ({
     fab: false,
   }),
+  methods: {
+    testRequest() {
+      test().then(response => {
+        console.log(JSON.stringify(response))
+        console.log(JSON.stringify(response.data))
+      })
+    },
+  }
 }
 </script>
 
@@ -32,6 +42,7 @@ export default {
         dark
         small
         color="green"
+        @click="testRequest"
     >
       <v-icon>mdi-pencil</v-icon>
     </v-btn>

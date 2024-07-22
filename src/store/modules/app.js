@@ -23,7 +23,6 @@ const actions = {
         commit('SET_IS_VISITOR', true)
     },
     setNoVisitor({commit}) {
-        console.log("set no visitor")
         commit('SET_IS_VISITOR', false)
     },
 }

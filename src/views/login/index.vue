@@ -15,6 +15,7 @@ export default {
       passwordShow: false,
       // 记住密码
       rememberPassword: false,
+
       // 是否处于登录状态
       isLogin: false,
 
@@ -32,12 +33,14 @@ export default {
     userLogin() {
       this.isLogin = true
 
-      const loginParam = {
-        userName: this.name,
-        password: this.password
-      }
+      const formData = new FormData();
+      formData.append('category',0)
+      formData.append('userName', this.name)
+      formData.append('password', this.password)
+      formData.append('rememberPassword', this.rememberPassword)
+
       // 登录
-      login(loginParam).then(response => {
+      login(formData).then(response => {
         const {data} = response
         if (data.error === 0) {
           // 保存用户信息
@@ -58,7 +61,18 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['user', 'isVisitor', 'token'])
+    ...mapGetters(['user', 'isVisitor', 'token']),
+  },
+  watch: {
+    // 监听记住密码按钮是否选中
+    rememberPassword(newValue, oldValue) {
+      if (newValue) {
+        if (!this.snackbar) {
+          this.snackbar = true;
+          this.snackbarText = '记住密码有效期为三天';
+        }
+      }
+    }
   },
   created() {
     if (!this.isVisitor) {

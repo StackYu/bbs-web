@@ -62,7 +62,8 @@ export default {
       </v-responsive>
 
       <!-- 用户头像 -->
-      <v-badge v-show="!isVisitor" bordered bottom color="deep-purple accent-4" dot offset-x="10" offset-y="10">
+      <v-badge style="cursor: pointer;"
+          v-show="!isVisitor" bordered bottom color="deep-purple accent-4" dot offset-x="10" offset-y="10">
         <v-avatar size="40" @click="showUserMenu">
           <v-img src="https://cdn.vuetifyjs.com/images/lists/2.jpg"></v-img>
         </v-avatar>

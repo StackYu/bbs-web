@@ -5,6 +5,7 @@ import router from './router'
 
 import vuetify from './plugins/vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import "@mdi/font/css/materialdesignicons.css";
 
 import 'highlight.js/styles/atom-one-dark.css'
 import highlightJS from 'highlight.js'

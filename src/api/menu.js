@@ -8,17 +8,33 @@ export function saveMenu(data) {
     })
 }
 
-export function getMenuChildren(id) {
+export function deleteMenu(id) {
     return request({
-        url: '/v1/api/menu/' + id,
+        url: '/menu/' + id,
+        method: 'delete',
+    })
+}
+
+export function updateMenu(data) {
+    let config = {
+        url: '/menu',
+        method: 'put',
+        data
+    }
+    return request(config)
+}
+
+export function getAllMenuBySystemInfo(systemInfoId) {
+    return request({
+        url: '/menu/systemInfo/' + systemInfoId,
         method: 'get'
     })
 }
 
-export function deleteMenuByUid(id) {
-    let config = {
-        url: '/v1/api/menu/' + id,
-        method: 'delete',
-    }
-    return request(config)
+export function getMenuChildren(id) {
+    return request({
+        url: '/menu/' + id,
+        method: 'get'
+    })
 }
+

@@ -5,9 +5,9 @@ const service = axios.create({
     baseURL: 'http://localhost:12436',
     // baseURL: process.env.VUE_APP_BASE_API,
     withCredentials: true, // send cookies when cross-domain requests
-    timeout: 5000 // request timeout
+    timeout: 1000 * 60 * 5 // request timeout
 })
-service.defaults.withCredentials=true; // 向后台发送请求时携带凭证
+service.defaults.withCredentials = true; // 向后台发送请求时携带凭证
 
 // service.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8'
 
